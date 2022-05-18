@@ -1,0 +1,31 @@
+site_name: Upper Airway Modelling Guide
+theme: readthedocs
+plugins:
+    - search
+    - mkdocs-video
+markdown_extensions:
+    - admonition
+    - fenced_code
+    - tables
+    - pymdownx.keys
+nav:
+    - Segmentation: 
+        - Loading Data: segmentation/loading.md
+        - Airway Segmentation: segmentation/segmenting-airways.md
+        - 3D Model Creation: segmentation/creating-3d-model.md
+    - Modelling:
+        - Requirements: modelling/requirements.md
+        - Importing: modelling/importing.md
+        - Preparation: modelling/preparation.md
+        - Airway Geometry: modelling/airway-geometry.md
+        - Peripheral Geometry: modelling/peripheral-geometry.md
+    - Printing:
+        - Slicing: printing/slicing.md
+    - Testing:
+        - Equipment: testing/equipment.md
+        - Positive Pressure Setup: testing/positive-pressure.md
+        - Negative Pressure Setup: testing/negative-pressure.md
+    - Simulating:
+        - Ansys: simulating/ansys.md
+extra_css:
+  - css/extra.css
