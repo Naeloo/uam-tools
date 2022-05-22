@@ -38,7 +38,8 @@ screw_num=2;
 screw_dia=1.8;
 
 //adapter_plate(d=d, screw_num=screw_num, screw_dia=screw_dia);
-adapter_drill(d=d, screw_num=screw_num, screw_dia=screw_dia);
+//adapter_drill(d=d, screw_num=screw_num, screw_dia=screw_dia);
+adapter_plate();
 
 // upper: screw_num=4, screw_dia=2.8, d=20
 // bottom: screw_num=4, screw_dia=2.8, d=20
