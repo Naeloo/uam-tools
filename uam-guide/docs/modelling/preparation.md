@@ -33,7 +33,7 @@ To start with, the airway geometry needs to be selected and Blender needs to be 
 Clear any existing mesh selections by hitting ++alt+a++. Move the camera to the area you want cut and select all of the geometry around the cutting area. Hit "C" to enable a selection brush. You can adjust its size by using the mousewheel, select using the left mouse button and undo selections with the middle mouse button. You can cancel the mode by hitting the right mouse button. Move around the geometry multiple times and make sure all nooks and crannies are selected. 
 
 !!! info
-    If you want, you can enable "X-Ray" mode on the top right to allow selecting through solid geometry, but be careful with this as you might easily hit geometry you did not intend to.
+    If you want, you can enable "X-Ray" mode on the top right to allow selecting through solid geometry, but be careful with this as you might easily hit geometry you did not intend to. ![X-Ray](img/x_ray.png)
 
 ![Bisect Selection](img/bisect_selecting.png)
 
@@ -51,8 +51,13 @@ Drag the cutting plane over the selected geometry as desired.
 Pop up the little "Bisect" window on the bottom left to adjust the parameters. Make sure "Fill", "Clear Inner" and "Clear Outer" are deselected. You can play with the Plane Point and Normal if you're not quite happy with the way the cut is
 oriented.
 
+!!!info
+    If you're cutting off an airway end and not through a point in the middle of the airway, you can select either "Clear Inner" or "Clear Outer" to discard the lower geometry. In that case, the cutting guide ends here. Refer to [adding a connector]() to add a connector to the open end.
+
 ![Bisecting](img/bisect_adjusting.png)
 
 Now hit ++v++ ("Rip") and click the right mouse button to tear the geometry apart. Then, hit ++ctrl+l++ to select one of the meshes. Move the geometry away a little bit to give yourself more room to work with.
 
 ![After Bisect, Rip and Grab](img/bisect_after.png)
+
+After you made a cut, you will probably want to [add connectors to the open ends]() so they can be connected.

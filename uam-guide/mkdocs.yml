@@ -17,8 +17,8 @@ nav:
         - Requirements: modelling/requirements.md
         - Importing: modelling/importing.md
         - Preparation: modelling/preparation.md
-        - Airway Geometry: modelling/airway-geometry.md
-        - Peripheral Geometry: modelling/peripheral-geometry.md
+        - Connectors: modelling/connectors.md
+        - Features: modelling/features.md
     - Printing:
         - Slicing: printing/slicing.md
     - Testing:
