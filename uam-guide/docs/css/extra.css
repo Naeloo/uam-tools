@@ -117,3 +117,10 @@ kbd {
     vertical-align: text-top;
     word-break: break-word;
 }
+/* Additional Admonitions */
+.admonition.success .admonition-title{
+    background: green;
+}
+.admonition.success {
+    background: #ebfaeb;
+}
