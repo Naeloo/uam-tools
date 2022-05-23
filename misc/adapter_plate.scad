@@ -1,8 +1,9 @@
 function screw_coords(d, r) = [cos(d)*r, sin(d)*r];
+function calculate_outer_dia(inner_dia, spacing, screw_dia) = inner_dia + spacing*4 + screw_dia*2;
 
 module adapter_plate(d=20, h=2, spacing=2, screw_dia=3,screw_num=3) {
     inner_dia = d;
-    outer_dia = inner_dia + spacing*4 + screw_dia*2;
+    outer_dia = calculate_outer_dia(inner_dia, spacing, screw_dia);
     screw_angle = 360 / screw_num;
     screw_radius = inner_dia/2 + spacing + screw_dia/2;
     linear_extrude(h){
@@ -18,13 +19,15 @@ module adapter_plate(d=20, h=2, spacing=2, screw_dia=3,screw_num=3) {
     }
 }
 
-module adapter_drill(d=20, h=20, spacing=2, screw_dia=3, screw_num=3) {
+module adapter_drill(d=20, h=20, spacing=2, screw_dia=3, screw_num=3, no_center=0) {
     inner_dia = d;
-    outer_dia = inner_dia + spacing*4 + screw_dia*2;
+    outer_dia = calculate_outer_dia(inner_dia, spacing, screw_dia);
     screw_angle = 360 / screw_num;
     screw_radius = inner_dia/2 + spacing + screw_dia/2;
     linear_extrude(h) {
-        circle(d=inner_dia, $fn=30);
+        if(no_center == 0){
+            circle(d=inner_dia, $fn=30);
+        }
         if(screw_num > 0){
             for( i = [0: screw_num-1] ){
                 translate(screw_coords(i*screw_angle, screw_radius)) circle(d=screw_dia, $fn=30);
