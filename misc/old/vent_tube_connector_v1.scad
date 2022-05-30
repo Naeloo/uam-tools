@@ -1,9 +1,9 @@
 use <adapter_plate.scad>;
 
 // Adapter params
-adap_d=21; adap_h=2; adap_spacing=2; adap_screw_dia=2.8; adap_screw_num=3;
+adap_d=22; adap_h=2; adap_spacing=2; adap_screw_dia=2.8; adap_screw_num=3;
 
-length = 30;
+length = 40;
 width = 2;
 diameter = 21;
 diameter_change = 1;
@@ -16,9 +16,6 @@ protrusion_count = 3;
 
 tube_precision = 80;
 protrusion_precision = 30;
-
-mid_length = 5;
-mid_width = 2;
 
 // Do not change beyond this point
 
@@ -41,11 +38,7 @@ module vent_tube() {
         translate([diameter/2 - width,0,0])
         union(){
             // Top Plate
-            translate([-diameter/2+width + adap_d/2, length + mid_length]) square([adap_spacing*2+adap_screw_dia,adap_h]);
-            // Midpiece
-            translate([-diameter/2+width + adap_d/2 - mid_width,length+mid_length]) square([mid_width,adap_h]);
-            translate([0,length]) polygon(points=[[0,0],[-diameter/2+width + adap_d/2 - mid_width, mid_length],[-diameter/2+width + adap_d/2 ,mid_length],[width+diameter_change,0]]);
-            //translate([-diameter/2+width + adap_d/2, length + mid_length]) square([adap_spacing*2+adap_screw_dia,adap_h]);
+            translate([-diameter/2+width + adap_inner_r,length]) square([calculate_outer_dia(adap_d, adap_spacing, adap_screw_dia) / 2 - adap_inner_r , adap_h]);
             // Protrusions
             for(i = [0:protrusion_count-1]) {
                 protrusion(protrusion_distance + protrusion_spacing * i);
@@ -60,5 +53,5 @@ difference(){
     // Vent Tube
     vent_tube();
     // Drill
-    translate([0,0,length+mid_length-.25]) adapter_drill(d=adap_d, h=adap_h+.5, spacing=adap_spacing, screw_dia=adap_screw_dia, screw_num=adap_screw_num, no_center=1);
+    translate([0,0,length-2.5]) adapter_drill(d=adap_d, h=adap_h+5, spacing=adap_spacing, screw_dia=adap_screw_dia, screw_num=adap_screw_num, no_center=1);
 }
