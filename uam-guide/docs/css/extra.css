@@ -46,7 +46,7 @@
     background: var(--fhtw-blue-light);
 }
 /* Hack the Logo into the RST theme */
-.icon.icon-home::after {
+.wy-nav-side .icon.icon-home::after {
     content: '';
     display: block;
     background-image: url(../css/logo.png);
