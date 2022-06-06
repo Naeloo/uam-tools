@@ -8,26 +8,18 @@
 use <adapter_plate.scad>;
 
 // Adapter params
-adap_d=10; adap_h=2; adap_spacing=2; adap_screw_dia=3; adap_screw_num=3;
+adap_d=21; adap_h=2; adap_spacing=2; adap_screw_dia=2.8; adap_screw_num=3;
 
 $fn = 100*1;
 
 // Outer Diameter (bottom)
-outer_diameter_1 = 8;
+outer_diameter_1 = 3.8;
 // Wall Thickness (bottom)
-wall_thickness_1 = 2;
+wall_thickness_1 = .8;
 // Rib Thickness (bottom), set to Zero to remove
-barb_size_1 = 0.5;
+barb_size_1 = .5;
 // Length (bottom)
-length_1 = 15;
-// Outer Diameter (top), should be smaller than or equal to Outer Diameter (bottom)
-outer_diameter_2 = adap_d;
-// Wall Thickness (top)
-wall_thickness_2 = 2;
-// Rib Thickness (top), set to Zero to remove
-barb_size_2 = 0.5;
-// Length (top)
-length_2 = 15;
+length_1 = 7;
 // Middle Diameter
 mid_diameter = calculate_outer_dia(adap_d, adap_spacing, adap_screw_dia);
 // Middle Length
@@ -40,7 +32,7 @@ module create_profile() {
     ////////
     // Middle
     ///////
-    polygon(points=[[inner_diameter_1/2,length_1],[mid_diameter/2,length_1],[mid_diameter/2,length_1+mid_length],[outer_diameter_2/2,length_1+mid_length]]);
+    polygon(points=[[inner_diameter_1/2,length_1],[mid_diameter/2,length_1],[mid_diameter/2,length_1+mid_length],[inner_diameter_1/2,length_1+mid_length]]);
     //////
     //length 1
     /////
