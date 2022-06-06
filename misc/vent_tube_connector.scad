@@ -3,7 +3,7 @@ use <adapter_plate.scad>;
 // Adapter params
 adap_d=21; adap_h=2; adap_spacing=2; adap_screw_dia=2.8; adap_screw_num=3;
 
-length = 30;
+length = 20;
 width = 2;
 diameter = 21;
 diameter_change = 1;
@@ -12,7 +12,7 @@ protrusion_size = 2;
 protrusion_inset = 1.5;
 protrusion_distance = 5;
 protrusion_spacing = 8;
-protrusion_count = 3;
+protrusion_count = 2;
 
 tube_precision = 80;
 protrusion_precision = 30;
