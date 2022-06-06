@@ -1,28 +1,28 @@
 /* FHTW Colouring */
 :root {
-    --fhtw-green: #8BB31D;
-    --fhtw-grey: #72777A;
-    --fhtw-grey-light: #e3e4e5;
-    --fhtw-blue: #00649c;
-    --fhtw-blue-very-dark: #002a42;
-    --fhtw-blue-dark: #003c5e;
-    --fhtw-blue-light: #007bbf;
-    --fhtw-blue-very-light: #b8e6ff;
+  --fhtw-green: #8bb31d;
+  --fhtw-grey: #72777a;
+  --fhtw-grey-light: #e3e4e5;
+  --fhtw-blue: #00649c;
+  --fhtw-blue-very-dark: #002a42;
+  --fhtw-blue-dark: #003c5e;
+  --fhtw-blue-light: #007bbf;
+  --fhtw-blue-very-light: #b8e6ff;
 }
 /* Hide back/next */
 .rst-versions {
-    display: none;
+  display: none;
 }
 /* Nav backgrounds */
 .wy-side-nav-search {
-    background-color: var(--fhtw-green); 
+  background-color: var(--fhtw-green);
 }
 .wy-body-for-nav {
-    background-color: var(--fhtw-grey-light);
+  background-color: var(--fhtw-grey-light);
 }
 /* Menu expando */
 .toctree-expand {
-    color: white !important;
+  color: white !important;
 }
 /* Submenu and submenu hover */
 /* - idle submenu backgrounds */
@@ -30,97 +30,154 @@
 .wy-menu-vertical li.toctree-l2 a,
 .wy-menu-vertical li.toctree-l2.current > a,
 .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a {
-    background: var(--fhtw-blue-very-dark);
-    color: white;
+  background: var(--fhtw-blue-very-dark);
+  color: white;
 }
 /* Blue menu colouring */
 .wy-menu-vertical li.current > a {
-    background: var(--fhtw-blue);
-    color: white;
+  background: var(--fhtw-blue);
+  color: white;
 }
 .wy-menu-vertical li.toctree-l1.current > a {
-    border-bottom: solid 1px var(--fhtw-blue-dark);
-    border-top: solid 1px var(--fhtw-blue-dark);
+  border-bottom: solid 1px var(--fhtw-blue-dark);
+  border-top: solid 1px var(--fhtw-blue-dark);
 }
-.wy-menu-vertical li.current a:hover, .wy-menu-vertical li.on a:hover, .wy-menu-vertical li.current > a:hover {
-    background: var(--fhtw-blue-light);
+.wy-menu-vertical li.current a:hover,
+.wy-menu-vertical li.on a:hover,
+.wy-menu-vertical li.current > a:hover {
+  background: var(--fhtw-blue-light);
 }
 /* Hack the Logo into the RST theme */
 .wy-nav-side .icon.icon-home::after {
-    content: '';
-    display: block;
-    background-image: url(../css/logo.png);
-    height: 100px;
-    background-size: 180px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: white;
-    border-radius: 20px;
-    margin-top: 10px;
+  content: "";
+  display: block;
+  background-image: url(../css/logo.png);
+  height: 100px;
+  background-size: 180px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  border-radius: 20px;
+  margin-top: 10px;
 }
 /* Centering on wide screens, stolen from Godot docs */
 @media only screen and (min-width: 769px) {
-    .wy-body-for-nav {
-        /* Center the page on wide displays for better readability */
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-    .wy-nav-side {
-        /* Required to center the page on wide displays */
-        left: inherit;
-    }
+  .wy-body-for-nav {
+    /* Center the page on wide displays for better readability */
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .wy-nav-side {
+    /* Required to center the page on wide displays */
+    left: inherit;
+  }
 }
 /* Fix for table styles */
 .rst-content table {
-    width: 100%;
-    overflow: auto;
-    display: block;
-    border: none;
-    border-collapse: collapse;
-    border-spacing: 0;
-    empty-cells: show;
-    margin-bottom: 24px;
+  width: 100%;
+  overflow: auto;
+  display: block;
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  margin-bottom: 24px;
 }
 .rst-content table thead {
-    color: #000;
-    text-align: left;
-    vertical-align: bottom;
-    white-space: nowrap;
+  color: #000;
+  text-align: left;
+  vertical-align: bottom;
+  white-space: nowrap;
 }
 .rst-content table tr td {
-    background-color: transparent;
-    vertical-align: middle;
-    font-size: 90%;
-    margin: 0;
-    overflow: visible;
-    padding: 8px 16px;
+  background-color: transparent;
+  vertical-align: middle;
+  font-size: 90%;
+  margin: 0;
+  overflow: visible;
+  padding: 8px 16px;
 }
 .rst-content table tr:nth-child(2n-1) td {
-    background-color: #f3f6f6;
+  background-color: #f3f6f6;
 }
 .rst-content table thead th {
-    font-weight: bold;
-    font-size: 90%;
-    margin: 0;
-    overflow: visible;
-    padding: 8px 16px;
+  font-weight: bold;
+  font-size: 90%;
+  margin: 0;
+  overflow: visible;
+  padding: 8px 16px;
 }
 /* Keys */
 kbd {
-    background-color: #fcfcfc;
-    border-radius: .1rem;
-    box-shadow: 0 .1rem 0 .05rem lightgrey,0 .1rem 0 lightgrey,0 -.1rem .2rem lightgrey inset;
-    color: black;
-    display: inline-block;
-    font-size: .75em;
-    padding: 0 .6666666667em;
-    vertical-align: text-top;
-    word-break: break-word;
+  background-color: #fcfcfc;
+  border-radius: 0.1rem;
+  box-shadow: 0 0.1rem 0 0.05rem lightgrey, 0 0.1rem 0 lightgrey,
+    0 -0.1rem 0.2rem lightgrey inset;
+  color: black;
+  display: inline-block;
+  font-size: 0.75em;
+  padding: 0 0.6666666667em;
+  vertical-align: text-top;
+  word-break: break-word;
 }
 /* Additional Admonitions */
-.admonition.success .admonition-title{
-    background: green;
+.admonition.success .admonition-title {
+  background: green;
 }
 .admonition.success {
-    background: #ebfaeb;
+  background: #ebfaeb;
+}
+/* Tabs */
+.tabbed-set {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em 0;
+  border-radius: 0.1rem;
+}
+
+.tabbed-set > input {
+  display: none;
+}
+
+.tabbed-set label {
+  width: auto;
+  padding: 0.9375em 1.25em 0.78125em;
+  font-weight: 700;
+  font-size: 0.84em;
+  white-space: nowrap;
+  border-bottom: 0.15rem solid transparent;
+  border-top-left-radius: 0.1rem;
+  border-top-right-radius: 0.1rem;
+  cursor: pointer;
+  transition: background-color 250ms, color 250ms;
+}
+
+.tabbed-set .tabbed-content {
+  width: 100%;
+  display: none;
+  box-shadow: 0 -0.05rem #ddd;
+}
+
+.tabbed-set input {
+  position: absolute;
+  opacity: 0;
+}
+
+.tabbed-set input:checked:nth-child(n + 1) + label {
+  color: red;
+  border-color: red;
+}
+
+@media screen {
+  .tabbed-set input:nth-child(n + 1):checked + label + .tabbed-content {
+    order: 99;
+    display: block;
+  }
+}
+
+@media print {
+  .tabbed-content {
+    display: contents;
+  }
 }
