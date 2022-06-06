@@ -60,4 +60,4 @@ Now hit ++v++ ("Rip") and click the right mouse button to tear the geometry apar
 
 ![After Bisect, Rip and Grab](img/bisect_after.png)
 
-After you made a cut, you will probably want to [add connectors to the open ends]() so they can be connected.
+After you made a cut, you will probably want to add connectors to the segment ends so they can be connected. To do this, continue with ["Adding - Airway End"](../connectors/#adding-airway-end).

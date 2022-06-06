@@ -20,4 +20,16 @@ Adapter plates can be sized by either specifying an outside or an inside diamete
 
 This guide is about how to add a connector an open airway ending after a cut - it directly picks up from ["Preparation - Cutting"](../preparation/#cutting).
 
+        - Measure Diameter, plug in for adapter of appropriate ID
+        - Import, place and join adapter mesh (for join: select airways, then adapter)
+        - Bisect upper geometry of airway to appropriate height
+        - Clean up geometry (inner faces of adapter, outer shell of airway geometry up until bisection)
+        - Select (alt+click) and Fill Edge Loops (alt+f)
+
 ## Adding - Airway Side
+
+        - Select a roughly circular outside geometry (circle select)
+        - Scale, <axis>, 0 (Flatten)
+        - Grab, <axis>, move until at appropriate position
+        - Generate and diff. appropriately sized drill
+        - Insert, rotate, place, add boolean mod to airways
