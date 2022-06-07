@@ -11,9 +11,10 @@ markdown_extensions:
     - pymdownx.tabbed
 nav:
     - Segmentation: 
+        - Requirements: segmentation/requirements.md
         - Loading Data: segmentation/loading.md
         - Airway Segmentation: segmentation/segmenting-airways.md
-        - 3D Model Creation: segmentation/creating-3d-model.md
+        - Exporting: segmentation/exporting.md
     - Modelling:
         - Requirements: modelling/requirements.md
         - Importing: modelling/importing.md
