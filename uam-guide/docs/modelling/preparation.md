@@ -56,12 +56,12 @@ oriented.
 
 ![Bisecting](img/bisect_adjusting.png)
 
-Now hit ++v++ ("Rip") and click the right mouse button to tear the geometry apart. Then, hit ++ctrl+l++ ("Select Linked") to select one of the meshes. Move the geometry away a little bit to give yourself more room to work with.
+Now hit ++v++ ("Rip") and click the right mouse button to tear the geometry apart. Then, hit ++ctrl+l++ ("Select Linked") in Vertex Mode to select one of the meshes. Move the geometry away a little bit to give yourself more room to work with.
 
 !!!attention
     Sometimes, the mesh isn't entirely linked and "Select Linked" won't select everything - in that case use the selection cursor with X-ray mode as described previously to select the entire segment.
 
-Now press +p+ and click "Selection" to turn the selected segment into a separate object. Always handling all separate segments as separate object is greatly beneficial to performance and usability, so don't skip this step.
+Now press ++p++ and click "Selection" to turn the selected segment into a separate object. Always handling all separate segments as separate object is greatly beneficial to performance and usability, so don't skip this step.
 
 ![After Bisect, Rip and Grab](img/bisect_after.png)
 
