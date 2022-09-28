@@ -1,0 +1,17 @@
+[0] Config.pm:304> INFO - This is Biber 2.14
+[0] Config.pm:307> INFO - Logfile is 'MME_PRT1_GN3_AirwayModel_ProjectDocumentation.blg'
+[86] biber-MSWIN32:322> INFO - === 
+[108] Biber.pm:415> INFO - Reading 'MME_PRT1_GN3_AirwayModel_ProjectDocumentation.bcf'
+[231] Biber.pm:943> INFO - Found 1 citekeys in bib section 0
+[251] Biber.pm:4256> INFO - Processing section 0
+[252] Utils.pm:75> INFO - Globbing data source 'Literature.bib'
+[263] Utils.pm:91> INFO - Globbed data source 'Literature.bib' to Literature.bib
+[277] Biber.pm:4455> INFO - Looking for bibtex format file 'Literature.bib' for section 0
+[281] bibtex.pm:1653> INFO - LaTeX decoding ...
+[296] bibtex.pm:1471> INFO - Found BibTeX data source 'Literature.bib'
+[335] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[335] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[335] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[335] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[343] bbl.pm:652> INFO - Writing 'MME_PRT1_GN3_AirwayModel_ProjectDocumentation.bbl' with encoding 'UTF-8'
+[344] bbl.pm:755> INFO - Output to MME_PRT1_GN3_AirwayModel_ProjectDocumentation.bbl

@@ -27,6 +27,15 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
+% TIKZ Configuration
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=6cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=6cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=6cm, text width=6cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
 %
 % Hier biblatex & Biber konfigurieren; Vergessen Sie nicht, dass Sie biber verwenden müssen um eine Bibliothek zu erzeugen
 %
@@ -69,11 +78,11 @@
 %
 % Einträge für Deckblatt, Kurzfassung, etc.
 %
-\title{Evaluation of Mechanical Upper Airway \\Models for Applications in Respiratory \\Research}
+\title{Physicalisation of Upper Airway \\Models for Applications in Respiratory \\Research}
 %\author{Titel Vorname Name, Titel}
 %\studentnumber{XXXXXXXXXXXXXXX}
-\author{Leonhard Hauptfeld\and{}Samuel Henry Mba\and{}Tamerlan Yusifov\\}
-\studentnumber{me21m003\and{}me21m0xx\and{}me21m0xx}
+\author{Leonhard Hauptfeld}
+\studentnumber{me21m003}
 \supervisor{Richard Pasteka}
 %\supervisor[Begutachter]{Titel Vorname Name, Titel}
 %\supervisor[Begutachterin]{Titel Vorname Name, Titel}
@@ -95,380 +104,543 @@
 
 \section{Vision}
 
-Upper airway modelling is a relatively new field and is being widely researched nowadays. Among other research, it could even gain relevance with regards to the recent proliferation of the SARS-CoV-2 Omicron variant, as the virus increasingly attacks the upper airways\cite{omicronairways}. Understanding and modelling these passages provides insight into their functionality and the effect of diseases. Aside from maintaining the confidentiality of volunteer CT data, there are also no significant ethical concerns with this sort of modelling, unlike in the case of animal testing. Some work has already been done in this project by a student group - the previous “Upper Airway Model” project succeeded in providing a 3D airway model from a single CT scan that can be rapidly manufactured for testing. However, the variability of human anatomy through age and other factors means that only one model is not nearly enough to account for the wide range of possible airway configurations and as such the process had to be altered and refined to allow for rapid creation of new manufacturable airway models to consequently ensure more meaningful results through a broader range of tested models.
+Upper airway modelling is a relatively new field and is being widely researched nowadays. Among other research, it could even gain relevance with regards to the recent proliferation of the SARS-CoV-2 variants, as the virus increasingly attacks the upper airways\cite{omicronairways}. Understanding and modelling these passages provides insight into their functionality and the effect of diseases. Aside from maintaining the confidentiality of volunteer CT data, there are also no significant ethical concerns with this sort of modelling, unlike in the case of animal testing. Some work has already been done in this project by a student group - the previous “Upper Airway Model” project succeeded in providing a 3D airway model from a single CT scan that can be rapidly manufactured for testing. However, the variability of human anatomy through age and other factors means that only one model is not nearly enough to account for the wide range of possible airway configurations and as such the process had to be altered and refined to allow for rapid creation of new manufacturable airway models to consequently ensure more meaningful results through a broader range of tested models.
 
 \section{Goal of the project}
 
-The goal of the project was to analyse the existing process for creation of an upper airway model usable for simulations as well as physical testing. The process was then to be altered and refined in ways that would make it faster as well as more universally applicable, tested and evaluated against a set of 13 CT scans consisting of male and female patients of varying age. To additionally facilitate smooth process execution, a document explaining the streamlined process was to be created.
-
+The goal of the project was to turn a digital model of an upper airway system to a physical one for testing.
+The physical model was to be tested using pressurized air and measurements taken that prove soundness and air-tightness of the model.
+For the physical testing, hardware and software that could take those measurements needed to be developed.
+To facilitate process usability, a document explaining the streamlined process was to be created.
 \section{State of the art}
 
-Throughout the last 10 years, there were quite a few modelling devices that were developed in this field. The first one that is worth mentioning is “i-Lung”\cite{ilungconf}. This setup was designed by FH Technikum Wien and the main purpose of it was to examine the particles that people breathe in at the workplace. This was done to identify and outline potential risk zones for people by determining whether the amount of pollutant particles within a given region is high. \cite{ilungorf}
-
-Moreover, after development of this device (i-Lung), a more advanced version with greater flexibility and an interchangeable control unit was designed - I-lung 2.0. The research done using those devices laid the foundations for a modelling project that dates to 2019, where a group of researchers at FH Technikum Wien simulated and designed a 3D model of the lower respiratory system. The simulation was performed to mimic the human respiratory system. This set up as well as xPULM were used to perform the analysis of aerosol content in the air. \cite{breathingpatterns}
-
-To perform the following setup, the group of researchers used CT scans of the lower respiratory tract of a real patient that was provided by Centro Hospitalar de Tras-os-Montes e Alto Douro. Utilizing the software “Slicer 3D”, a segmentation of the scan was performed to create a model of the upper airways. This model was then loaded into “PrusaSlicer” to create a physical model for testing. Additionally, the model was used in the “Ansys” simulation software to also simulate flow in addition to physical testing.
-
+Some upper airway models exist at UAS Technikum Wien for researching mask effectiveness, inhaler efficiency and other respiration related topics.
+No guidelines or processes for development of models exists or was accessible for the purposes of this research, therefore none is assumed to exist.
 
 \section{Analysis}
 
-\subsection{Limitations of previous work}
-The main limitation of this procedure that one may identify is the number of CT scans. To recreate a 3D model that mimics the lower respiratory tract as accurately as possible, there has to be numerous of scans of the patient used, the reason behind this is that all people have slightly different magnitudes/sizes of respiratory system (due to age, gender and etc). Thus, the end product of this segmentation procedure that was later important to the “PrusaSlicer” did not very accurately imitate the lower respiratory tract.  
-\subsection{Requirements for a better process}
-To further develop the process, the procedure must be re-evaluated on a more diverse set of CT examinations. Segmentation has to be performed on numerous of scans of both genders and of the patients of different age. This will allow the process to be considered more “universal’, and the further research and analysis using the created models will be applicable to more genders and different age groups. 
-
-Moreover, the possibility of using different software has to be explored. To truly re-evaluate the process, different products have to be evaluated on certain criteria and the best possible solution incorporated into the new process.
-
-An example for this is the 3D mesh repair software “MeshMixer”. This software is very precise, however is not user friendly, thus a lot of time might be wasted getting familiar with the tools provided by this programme. Apart from this, in the most recent project, certain values are not given to the user for the “masking” under the section 1c, this makes it very difficult for one to navigate in this process.
-
-The resulting new process should be as easy to use as possible and applicable to a broad range of CT scans with different characteristics such as gender. These factors are limited by the amount of time available to the project, as such they should be implemented to a reasonable degree.
-
-Not only should the new process be easier to follow but the resulting models should incorporate several improvements as well. First and foremost is a re-evaluating of attachment mechanisms on the physical model, used to attach it to various periphery such as measurement equipment or lung simulators. The attachment mechanism should primarily be as leak-free as possible. The models should, if achievable, be easier to print and require less support material.
-
-Physical accuracy is also of great concern, the resulting models should be kept accurate physiology-wise through the whole process. They will be evaluated against available data on airway dimensions as depicted in figure \ref{length_of_airway_segments}.
-
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.5\linewidth]{images/length_of_airway_segments}
-	\caption{Cumulative length of various airway segments}\label{length_of_airway_segments}
-\end{figure}
-
-\subsection{Advantages of process re-evaluation}
-The advantages of the process re-creation have been touched on in the previous “Goal of the project” and “Requirements for a better process” sections. The new process should be easier to use than the old one, so that when new CT scans are provided, they can quickly be turned into viable models for study to broaden the available data set for studies done on sets of these models. This will also lead to a better understanding of various conditions through different age groups and genders.
-
-The improved physical model will result in more accurate physical measurements; the focus on providing an easier rapid manufacturing process will result in more printable models that will expand the result set of any physical measurements
-
-This work will lay further foundations in the area of upper airway modelling, further development could be based on it to expand on these advantages further.
-
-\subsection{Outlook towards possible future use cases}
-The upper airway does not only transport air to the lung but also plays an important part in speaking and singing. The models produced could be used to provide additional insight into these processes through simulation and testing of audio propagation. Several types of audio propagation could be studied, not only phonetic but also other processes such as snoring.
-
-Snoring is a symptom of obstructive sleep apnea (OSA). During sleep, the upper airway may partially or completely collapse. It is a common disorder, with 9\% to 38\% of the general population suffering from it. It is also increasingly prevalent in older age groups with occurrence rates as high as 90\% in older men and 78\% in older women. Simulation using these models through Ansys and real-life testing by modification of physical models could provide valuable insight into the conditions inside the upper airways when symptoms occur.
-
-Studying these symptoms in patients takes a considerable amount of time, manpower and patients willing to undergo study. With models created from one CT examination, the condition could be replicated much more rapidly, and conditions studied without patient involvement, leading to faster and more effortless findings on the topic. The advantages this process and these models bring for analysing OSA could be applied to many more similar conditions.
+The lack of a more universally applicable and documented process needs to be addressed. In addition, development of an in-house
+measurement device with accompanying custom software could benefit research by removing the need for expensive external equipment. Furthermore,
+such a device could be customized to the needs of research conducted at UAS Technikum.
 
 \chapter{Materials and Methods}
 
-\section{Project structure, Work packages}
+The main processes are split into those required to accomplish creating a model for physical testing ("Physicalisation") and those necessary for
+printing it. The resulting processes then need to be documented. Finally, a device and accompanying software for physical measurements are developed.
 
-The process was split into three major parts, each handled by one of the team members. “Segmentation” would include taking the CT scans and creating a preliminary mesh of the upper airway through slicing, handled by Tamerlan Yusifov. “Physicalising” were to contain the processes that handled taking that mesh file and created a computer model from it to use for simulation and 3D printing. This would be a two-step process, involving first repairing the mesh generated by segmentation and then modifying it, mostly by adding two input- and output-ports for air to flow through. Finally, “Simulation”, handled by Samuel Henry Mba, was to take the model and run it through simulation software to simulate the flow and pressure at various stages inside.
+\section{Requirements and approaches for a physicalisation process}
 
-\subsection{Schedule}
+\subsection{Requirements}
 
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=1.0\linewidth]{images/schedule}
-	\caption{Gantt chart depicting project scheduling}\label{schedule}
-\end{figure}
+The process of editing the mesh for physicalisation needs to keep to a few key requirements.
 
-\subsection{Initial Research}
+\begin{itemize}
+	\item \textbf{Accuracy} | The resulting mesh needs to be true to the original airways with regards to analysis.
+	\begin{itemize}
+		\item The air-facing parts of the resulting mesh for printing needs to match the air-facing parts of the original mesh.
+		\item Parts that don't interact with airflow (for example, the outer wall) can be modified as required.
+	\end{itemize}
+	\item \textbf{Usability} | The process needs to be as easy to use as possible by someone with little previous knowledge.
+	\begin{itemize}
+		\item Keep number of steps to the minimum necessary
+		\item Document common errors and anomalies with ways to resolve them
+	\end{itemize}
+	\item \textbf{Universality} | The process needs to be as universally applicable as can be.
+	\begin{itemize}
+		\item The basic principles should be applicable to the majority of airways.
+		\item There cannot be a catch-all solution to every airway model. Universality is restricted in that regard.
+	\end{itemize}
+\end{itemize}
 
-The initial research would cover documenting state of the art information pertaining to this topic, such as previous work done, improvements to be made to that work and other surrounding information. Additionally, everyone was to do preliminary research into their work area with regards to the previous work, usable software and its availability, familiarization with that software and other similar topics.
+\subsection{Evaluating software}
 
-\subsection{Evaluation of existing process}
+The process will need to make use of one more applications to aid in mesh manipulation.
+The amount of required software should be kept to a minimum to avoid the user needing to install it all in
+addition to keeping it updated.
 
-The existing documentation regarding the process steps had to be evaluated by stepping through the existing instructions and software. In addition, the same scrutiny would be applied to relevant processes found during the research phase in case they contained any pertinent information. The process evaluation focused on three main aspects that would each focus on their own certain evaluation criteria. While model quality itself was not a specific criterion of any of these evaluations, it was hoped that a thorough evaluation of the individual criteria would have a positive effect on the model quality. At the very least, this method would establish documentation of existing processes and baseline learnings from which a new process could be created; this process could then be examined for possible model quality improvements.
+Software is evaluated based on a few key criteria:
+\begin{itemize}
+	\item \textbf{Ease of Use} | An overall impression of the UI, how "fool-proof" the software is, how many errors it allows, how fast it can be learned, etc.
+	\item \textbf{Functionality} | How many tools the software provides, how useful they are for this application and how well they work
+	\item \textbf{Availability} | Whether the software is free to download, free for academic purposes or requires a purchase. Additionally, being Open Source is a bonus due to the guaranteed continued availability.
+	\item \textbf{Automatability} | A minor point - how automatable the software is through scripting or similar. Some processes could eventually be automated through this.
+\end{itemize}
 
-\subsubsection{Documentation-based}
-
-The \emph{documentation-based} evaluation was to look at the existing steps and information (such as settings, values) and verify both their informational content as well as their applicability to the range of provided CT imagery. For example, any vague wording that could lead to ambiguity regarding choices to be made during segmentation was to be identified for later rewriting based on learnings from this step. Purely informational content such as values to apply during segmentation was to be evaluated on the larger data set and either confirmed or marked for adjustment in the new process.
-
-\subsubsection{Time-based}
-
-For the \emph{time-based} evaluation, processes were to be split into segments and it would be analysed how much time was spent on these segments both in absolute and proportional (\% of the total process time) terms. This would allow identification of time sinks – actions in the process that took up excessive amounts of time and would require attempts at optimization. Time sinks could be identified as either computational (the execution time of a tool, a file parsing process) and human (requiring a lot of manual attention) types. Computational time sinks could only be mitigated by more processing power or use of different tools while human time sinks could stem from imprecise documentation or inefficient process steps.
-
-\subsubsection{Issue-based}
-
-During execution of a process, some error conditions may occur in the process due to mistakes or excessive variance in data like CT examinations. While, ideally, the documentation-based evaluation would iron out most flaws in the process that would lead to these error conditions the main process can’t account for all failure states. That is why, if any major oddities during trial of processes popped up, they were to be documented so a new process guide could include a description of them along with general advice on how to resolve the problem. That way, common mistakes can be more easily resolved, and the time and energy spent on resolvable situations may be reduced. 
-
-\subsubsection{Points of concern}
-
-For \emph{Segmentation}, the software 3D Slicer and the accompanying documented process had to be applied and evaluated.
-
-\emph{Physicalising} required evaluation of the software MeshMixer and the associated process. No process or software regarding mesh modification or 3D printing was provided and no entirely relevant information was found during initial research. As such, none of this was analysed at this stage. This part of the process would have to be created from scratch.
-
-In \emph{Simulation}, the Ansys simulation software was to be used on the model and the process again evaluated.
-
-\subsection{Developing new process}
-
-To develop the new process, knowledge from the initial research as well as the previous evaluation of the existing processes was to be taken to create a new and revised process. In the end, the new workflows should be easier to execute and applicable to a broader range of CT imagery.
-
-\subsubsection{Segmentation}
-
-To develop a new process for \emph{Segmentation}, the researched segmentation software (“3D Slicer” and “Materialise Mimics”) would be tested and evaluated for use in the process. Concrete criteria for evaluation would be availability, ease of use and resulting mesh quality with provided airway imagery.
-
-The process for segmentation should consist of clear explanation of segmentation parameters and their effect on the produced mesh, including error states from the issue-based evaluation. Clear, sequential guidance should be given on how to proceed with segmentation, including suggested value ranges for the parameters (based on the documentation-based evaluation), with possible deviations based on special conditions (certain age groups, for example). In the end, the person applying the process should not have to use parameter values outside the specified ranges or spend excessive amounts of time on tedious manual processes (time-based evaluation) or adjusting values outside the defined ranges.
-
-The new process would later be evaluated based on how well it could be applied to the 13 provided scans.
-
-\subsubsection{Physicalising}
-
-The process for \emph{Physicalising} would, as previously mentioned, be split into the groups “Mesh Repair” and “Mesh Modification”.
-
-Software for Repair (MeshMixer, MeshLab and a custom mesh repair script) would be evaluated based on ability to produce a model usable for printing and analysing from a segmented mesh with minimal human intervention. At the end of the repair process the model should be completely hole-free while staying as true to the original mesh as possible and with as little time as possible having been invested. To that end, the provided tools in the software and their effectiveness would be evaluated as well as how many automation capabilities the software had. Full automation is a non-goal of this project, partial automation however could be beneficial to minimise required human post-processing. The learnings from these evaluations would be used to craft a new process suited to the software utilizing partial automation capabilities if existing as well as more detailed descriptions of possible fault conditions (faulty meshes) and the processes/tools used to remedy those conditions.
-
-Modification software (OpenSCAD, Fusion360) were to be evaluated with regards to their ability to handle and modify imported mesh files, general ease of use, automatability and quality of resulting model. Additionally, it was to be evaluated if the resulting model would require another round of mesh repair – this was to be avoided if possible. The specific application for mesh modification in this case is the appending of physical input and output ports to the model used for attaching peripheral machinery to the printed model. Ideally, the process would result in a partly automated parametrized project file or script that would only require the user to place the ports in the correct positions. It would also be highly advantageous for the port models to be swappable with relative ease, as that would facilitate evaluation of various port geometry later in the project. With the development of this process, care had to be taken not to extend the scope of the automation to too high a degree, as this would both consume too much development time and make the process less universally applicable.
-
-\subsubsection{Simulation}
-
-Only the simulation software “Ansys”, used in the previous project, was to be considered. The software would be evaluated on the standard software evaluation parameters availability and ease of use. The simulation process was to be documented more thoroughly, with concise step-by-step instructions as well as documentation of possible erroneous configuration and steps on how to resolve them.
-
-\subsection{Evaluation of new processes}
-
-The new processes were to be evaluated on the provided CT sample imagery. During this, the process would be fine-tuned and subsequently “locked in” – after that point in time, no changes should be made. This would be a task for everyone.
+The evaluated software will be Autodesk Fusion 360, Blender and OpenSCAD.
 
 \newpage
-\subsection{Physical model testing}
 
-During this phase, models printed during process evaluation would be tested in a physical setup. They would be included inside a pneumatic circuit, either having air pushed into them our vacuumed out of them, and the pressure and flows at the input and output of the airways would be measured. A diagram depicting a push-setup can be found in figure \ref{push-setup}.
+\subsection{Process development}
+
+The process is to be developed by first identifying all the required subprocesses and then working out a
+basic working routine for each. The basic routine is then evaluated based on the process evaluation critera - if they
+are not deemed sufficiently fulfilled (e.g. a significant deviation from the original mesh) the existing steps are
+then refined by experimenting with new tools and methods. The new steps are then again evaluated. This repeats until
+all the criteria are sufficiently fulfilled and the process is worked out (Fig. \ref{phys-process-dev}).\\
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=.8\linewidth]{images/push-setup}
-	\caption{Simplified push-configuration testing diagram}\label{push-setup}
+	\begin{tikzpicture}[node distance=1.5cm]
+		\node (start) [startstop] {Start};
+		\node (subpro) [process, below of=start] {Identify needed subprocesses};
+		\node (basic) [process, below of=subpro] {Work out a basic routine};
+		\node (eval) [process, below of=basic] {Evaluate\\Accuracy, Usability, Universality};
+		\node (crit) [decision, below of=eval, yshift=-2.2cm] {Fulfils critera adequately?};
+		\node (refine) [process, right of=crit, xshift=6cm] {Refine (tools, methods)};
+		\node (finish) [startstop, below of=crit, yshift=-2.2cm] {Finished};
+	
+		% Sequential Flow
+		\draw [arrow] (start) -- (subpro);
+		\draw [arrow] (subpro) -- (basic);
+		\draw [arrow] (basic) -- (eval);
+		\draw [arrow] (eval) -- (crit);
+		% Eval decision
+		\draw [arrow] (crit) -- node[anchor=north] {no} (refine);
+		\draw [arrow] (crit) -- node[anchor=west] {yes} (finish);
+		\draw [arrow] (refine) |- (eval);
+	\end{tikzpicture}
+	\caption{Physicalisation process development}\label{phys-process-dev}
 \end{figure}
 
-During this phase, various methods for connections between the model and the sensors and pressure sources would be tested and evaluated. Connections to the MPX50100P pressure sensors \cite{mpx5010} were previously accomplished using press-fit tubing of a 4mm inner diameter. The SFM3300 flow sensors \cite{sfm3300} featured standard female and male 22mm ventilator connections as defined by ISO5356-1:2004 \cite{iso5356}.
+\section{Requirements and approaches for a printing process}
 
-\subsection{Creation of process document guide}
+\subsection{Requirements}
 
-Also, as a collective task, the new processes would be merged into a new process document that would contain all the new information in one document. This process document was to be created using the tool “mkdocs” to create both an easily navigable website and a PDF document for reference.
+The requirements to the printing process are broadly the same as to the mesh process - Accuracy, Usability and Universality.
+Accuracy in 3D printing pertains to how accurate the printed airway model will be compared to the provided mesh.
+Universality is additionally relevant when it comes to the wide variety of available 3D printers and how well the printing process
+works for them. The usability concerns remain the same. As an additional requirement, the printed model
+will need to be air tight.
 
-\section{Technical Documentation for software projects}
+\subsection{Process development}
 
-\subsubsection{Segmentation}
-The following software was evaluated or incorporated (bold) into the segmentation process:
+As most of the printing process is automated, the relevant user input is in material choice and printing settings.
+Different materials and printing settings have to be tried and the printed results evaluated - again with regards to accuracy and universality.\\
 
+Materials to be evaluated:
 \begin{itemize}
-	\item 3D Slicer
-	\item Materialise Mimics
-\end{itemize}
-The following software was evaluated or incorporated (bold) into the physicalising process:
-
-\subsubsection{Mesh Repair}
-
-\begin{itemize}
-	\item Autodesk MeshMixer
-	\item MeshLab
-	\item Custom repair script (Python)
+	\item \textbf{PLA} | Brittle but easy to work with, can be printed on any FDM printer
+	\item \textbf{ABS} | Stronger and more flexible but requires more advanced FDM printers and is prone to deforming during print
+	\item \textbf{TPU} | Strong and flexible, provides good sealing surfaces, hardest to print of all three
 \end{itemize}
 
-\subsubsection{Mesh Modification}
+Settings to be evaluated:
+\begin{itemize}
+	\item \textbf{Layer Height} | Height of an individual FDM layer, 0.1, 0.15 or 0.2mm
+	\item \textbf{Supports} | Where to generate support struts for model overhangs
+	\item \textbf{Model Placement} | Where to place and how to orient the model on the print bed
+\end{itemize}
+All other settings are too specific to individual printer models to be set with any certainty. The prints
+will be tested on an Ultimaker 2+.
+
+Models are printed using a subset of settings and evaluated based on the above-mentioned criteria. If a printed model
+does not pass the criteria (e.g. is not air tight or too brittle) the settings are changed and the model is re-printed to be evaluated again.
+If a printed model passes muster, the settings are noted down for documentation.
+
+\section{Documentation of processes}
+
+Both the finalized mesh modification and printing processes are to be documented in an easily accessible
+form with picture guidance. This resulting guide document needs to conform to the same usability requirement
+as the processes themselves.
+
+\section{Developing and evaluating hardware and software for measurements}
+
+\subsection{Hardware}
+
+For measurements of airflow and pressure in physical airway models, a device needs to be created
+that can take these measurements. The requirements are as folllows:
 
 \begin{itemize}
-	\item OpenSCAD
-	\item Autodesk Fusion 360
+	\item \textbf{Flow Measurements} | Take airflow measurements from 2 or more sensors on a typical human breathing scale (5-10 l/min)
+	\item \textbf{Pressure Measurements} | Take air pressure measurements from 2 or more sensors on a typical human breathing scale (0-10kPa)
+	\item \textbf{Transmission} | Transmit those signals in a timely and reliable manner to a computer
 \end{itemize}
 
-\section{Technical Documentation for hardware projects}
+An appropriate microcontroller and sensors that work within the specified ranges need to be selected.
+In addition, a method of data transmission needs to be worked out that adheres to the timeliness and reliability principles.
 
-Additive rapid manufacturing technologies used include Fused Deposition Modelling (FDM) and Stereolithography (SLA).
+\subsection{Software}
 
-\subsubsection{3D Printers, SLA}
+The software needs to be able to handle the incoming data from the measurement device and log it
+to storage reliably. Additional functionality could include display and analysis but these features are not required.
 
-\begin{itemize}
-	\item Prusa SL1S
-	\item Formlabs 2
-\end{itemize}
+A language and/or framework that can handle the requirements and is maintainable needs to be selected and the
+program implemented.
 
-\subsubsection{3D Printers, FDM}
-
-\begin{itemize}
-	\item Ultimaker 2+
-	\item Prusa Mk3S+
-\end{itemize}
-
-During further work, this section will eventually be expanded to contain all the tested manufacturing materials, printer settings, ways of physical coupling and other machinery included in the physical testing process.
-
-\section{Risk management}
-
-The main risks of the existing process evaluation lie in the inability to identify any issues based on the proposed evaluation criteria. Furthermore, excessive amounts of time could be spent on trying to optimize process steps that are either a non-issue or exceedingly hard to optimize. To mitigate the risk of criteria failure, a more open analysis of the existing processes will be conducted if no issues can be identified through the evaluation criteria. To mitigate excessive time spent, only a certain amount of time within a maximum of a week is allowed to be spent on single identified issues.
-
+\newpage
 \chapter{Results}
 
-\section{Evaluation of existing processes and proposed changes}
+\section{Novel mesh editing processes}
 
-\subsection{Segmentation}
-
-\subsubsection{Software}
-
-The software “Materialise Mimics” was planned to be evaluated for segmentation purposes, as it seemed to be more user friendly, however it was not available for free (license was required, no academic license available) so the choice fell on continuing use of the “3D Slicer” software.
-
-\subsubsection{Evaluation of existing process sourced from the internet}
-
-To get familiar with the mentioned software, YouTube tutorials \cite{yt-tutorials} were used as well as manuals from the internet. Firstly, CT scan data was installed from our source. Afterwards, instructions were carefully followed as in the tutorial. Initially, this involved pressing the “Load DICOM” button in the software and choosing the folder with the CT scans to load the data. Once this step was done, all CT scans were loaded to the software in different projections (in 3 different views, please refer to figure \ref{1-different-ct-projections}.
-
-%\begin{figure}[!htbp]
-%	\centering
-%	\includegraphics[width=.4\linewidth]{images/existing-evaluation/1-different-ct-projections}
-%	\caption{3 different CT projections}\label{1-different-ct-projections}
-%\end{figure}
-
-After performing this step, one had to choose the “Segment Editor” option under the upper toolbar option. This mode allowed starting the segmentation process of the CT scans. After this, one had to choose the “Add” button and click it three times to have 3 different segments. They had to be renamed to simplify the downstream process: “Lung”, “Airways” and “Other”. Initial segmentations are performed on the “Lung” part, once this option is chosen, the “Paint” mode had to be selected. This mode allows circling of the region of interest to segment. For lungs, the black hollow region on the CT scans (this region refers to the lungs) has to be chosen. The following mode “Pain” had to be performed for the 2 other segment options -”Airways” and “Other”. The most difficult part was “painting” the airways, as it was extremely difficult to select in the CT scans. To segment airways on the CT scans, one had to select the circular black hollow region in the center of the CT scans – “Airways”. The “Other” segment refers to the lining of the lungs that also had to be accounted for by encircling. The procedure can be seen illustrated in figure \ref{2-segmentation-procedure}. 
-
-%\begin{figure}[!htbp]
-%	\centering
-%	\includegraphics[width=.4\linewidth]{images/existing-evaluation/2-segmentation-procedure}
-%	\caption{Segmentation procedure}\label{2-segmentation-procedure}
-%\end{figure}
-\begin{figure}[!htb]
-	\begin{minipage}{0.48\textwidth}
-		\centering
-		\includegraphics[width=.7\linewidth]{images/existing-evaluation/1-different-ct-projections}
-		\caption{3 different CT projections}\label{1-different-ct-projections}
-	\end{minipage}\hfill
-	\begin{minipage}{0.48\textwidth}
-		\centering
-		\includegraphics[width=.7\linewidth]{images/existing-evaluation/2-segmentation-procedure}
-		\caption{Segmentation procedure}\label{2-segmentation-procedure}
-	\end{minipage}
-\end{figure}
-
-After initializing the above-mentioned steps, one had to choose the effect “grow from seeds”, also selecting “everywhere” and “overwrite all options” under “editable area” and “modify another segment” respectively. The following procedure allows optimizing the 3D model afterwards. After these steps are performed, one must choose option “Initialize” to start the process of segmentation of the model.  Once this step is done, one has to choose the option “Show 3D” to obtain the model of the right side of the screen, this step might take a few minutes. 
-Unfortunately, obtained results at this moment do not look any near to the desired results (please refer to the figure \ref{3-example-of-how-should-look}). The main reason behind this is the fact that the vast majority of tutorials and online guides from the source are working with already existing data from the 3D slicer, thus it is very straightforward to choose desired regions of interest from the CT scans (please refer to figure ref{4-data-used-in-the-source}). In a contrast, it was very difficult to select / ”paint” the desired region in the given CT scans, due to the fact that the provided CT scans were of the whole upper part of the body, compared to the CT scans in all of the tutorials that are solely of the chest part of the body, which makes it very easy to select the desired parts. 
-
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=.4\linewidth]{images/existing-evaluation/3-example-of-how-should-look}
-	\caption{Example of how the model should look, taken from an online source}\label{3-example-of-how-should-look}
-\end{figure}
-
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=.4\linewidth]{images/existing-evaluation/4-data-used-in-the-source}
-	\caption{Data that was used in the source, where lungs and airways can be clearly seen}\label{4-data-used-in-the-source}
-\end{figure}
-
-To get the model as close as possible to desired result, the process of “painting” the desired regions of the CT scans had to be studied more closely in order to make sure to select all the regions. In case of the model not conforming to the standard closely enough, manual “painting” must be used as well. Please, refer to figure \ref{5-intermediate-model} to see the model that was obtained so far using the software. 
-
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=.4\linewidth]{images/existing-evaluation/5-intermediate-model}
-	\caption{Intermediate model, work-in-progress}\label{5-intermediate-model}
-\end{figure}
-
-Another improvement that has to be made is to do with the software, more research must be conducted in order to understand the full functionality and possibilities of the given software. Moreover, one may consider using the “Cropping” mode to get rid of the parts of CT scan that are unwanted.
-
-\subsubsection{Evaluation of existing process from previous group}
-
-Most of the existing documentation from the previous group handled the segmentation process, there were multiple pages to evaluate.
-
-The following \textbf{\emph{documentation-based}} issues were identified in the existing process:
-
-\begin{itemize}
-	\item The import process into 3D slicer is not documented. The data arrived in DICOM format with a special tool and a proprietary metadata format. The import process was not trivial and should be covered in the future.
-	\item The selection of series and by which criteria a base series for segmentation should be selected was barely, if at all mentioned
-	\item Adding of segments and their relevance should be briefly described, with references to Slicer documentation
-	\item The mechanisms behind the “Grow from seeds” tool and the usage of its 3D view to evaluate the result is poorly documented – again, provide a short description with references
-	\item Non-trivial export process to STL is not described, multiple parameters can be adjusted
-\end{itemize}
-
-Furthermore, the given range of threshold values for selection of air segments was evaluated. These should not differ majorly (within 10-15\%) between different examinations with the same machine. Since the CT machine was not identifiable, the values are categorized by the anonymous patient IDs of the provided samples.
-
-\begin{table}[!htbp]
-	\centering
-	\caption{Applied threshold values in segmentation}\label{tab-threshold}
-	\begin{tabular}{| p{0.3\linewidth} | p{0.3\linewidth} |}\hline
-		Patient ID & Threshold \\\hline
-		0181172089 & -221 \\
-		0190544287 & -240 \\
-		0190667317 & -220 \\\hline
+\subsection{Software Evaluation}
+\begin{table}[h]
+	\caption{Mesh software evaluation}\label{mse}
+	\begin{tabular}{|p{0.15\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+	\hline
+	\textbf{Software}   & \textbf{Ease of Use}                                                                      & \textbf{Functionality}                                                                           & \textbf{Availability}                    & \textbf{Automatability}                  \\ \hline
+	Fusion 360 & Centered around usability. Friendly user interface, easiest CAD software.        & Strong CAD and Mesh functionality, centered around physical models.                     & Free for Education, Proprietary & None                            \\ \hline
+	Blender    & Medium usability.Lots of tutorials are available, can be learned in a few days. & Primarily used for CGI. Some 3D printing tools are available. Wide array of mesh tools. & Free, Open Source               & Python Interface                \\ \hline
+	OpenSCAD   & Not easy. Models are created in custom scripting language. Steep learning curve. & CAD modelling only. Almost limitless programmable functionality.                        & Free, Open Source               & Completely (Models are Scripts) \\ \hline
 	\end{tabular}
 \end{table}
 
-For the \textbf{\emph{time-based evaluation}}, a later segmentation run of patient 0190544287 was recorded by the same person on two different systems (PC and Notebook) and the time spent on each segment identified. The total time distribution of segmentation is as follows in figure \ref{segmentation-time-proportions}.
-
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=.8\linewidth]{images/segmentation-time-proportions}
-	\caption{Segmentation Time Proportions}\label{segmentation-time-proportions}
-\end{figure}
-
-As is evident of the proportions graph, the vast majority of time is spent in the segment editor. Since it takes up such a major portion of the time, this segment was again split into smaller segments to identify time sinks that could be optimized within it.
-
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=.8\linewidth]{images/manual-segment-editing-proportions}
-	\caption{Manual Segment Editing Proportions}\label{manual-segment-editing-proportions}
-\end{figure}
-
-Again, it is clear from the graph in figure \ref{manual-segment-editing-proportions} that most of the time spent on segmentation is in the “layer painting” phase, where the air in airways is painted on multiple layers to provide a basis for the “grow from seeds” function to later connect these markings to a full airway segmentation.
-
-The biggest measure to reduce time spent on this phase would be to provide guidelines on which areas require the most manual attention (the most manually painted layers) due to complex structures and which require very little human intervention and can be mostly segmented by the computer / the tool.
-
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=.4\linewidth]{images/segmentation-area-complexity}
-	\caption{Segmentation Area Complexity}\label{segmentation-area-complexity}
-\end{figure}
-
-As can be seen in figure \ref{segmentation-area-complexity}, the most complex area is around the nasopharynx and nasal cavity as well as the oropharynx while the larynx is a comparatively simple tube. The upper marked area requires significantly more manual work than the lower one – spending time on the lower area is mostly wasted and future documentation should reflect that.
-
-Furthermore, it should be documented that the size of the brush used for manual painting can be adjusted – this greatly reduces time spent on layers with more complex geometry.
-
-During research, it was discovered that experimental segmentation tools exist for Slicer that were demonstrated to be a very fast method for segmenting areas with good contrast \cite{fast-marching}. Being air filled cavities, the upper airways would provide such contrast to the surrounding bones and tissue. However, the evaluation could not be completed because the experimental tools would often not work, citing various error messages. Sometimes they crashed or hung the slicer Software entirely. Purely based on the documentation on them that was researched, they seem an interesting prospect and should be revisited when they have reached more maturity.
-
-Lastly, some of the tool performance was compared between a PC and a Laptop processor; the time savings from a faster processor turned out negligible unless a tool had to be used many times over. The most computationally demanding tools (Import \& Grow from seeds) only came to use one time in the process, as such the computational time sinks can be ignored.
-
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=.8\linewidth]{images/slicer-tool-performance}
-	\caption{Slicer Tool Performance}\label{slicer-tool-performance}
-\end{figure}
-
-An error state that could be identified during \textbf{\emph{issue-based process evaluation}} was that a negative 3D mesh surrounding the desired airway mesh appeared after the “grow from seeds” function was applied.  The state is illustrated in figure \ref{error-state-negative-mesh}.
-
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=.5\linewidth]{images/error-state-negative-mesh}
-	\caption{Error State: Negative Mesh}\label{error-state-negative-mesh}
-\end{figure}
-
-This can be remedied by adding an additional background layer outside patient physiology. Alternatively, these parts can be cut off using the cutting tool of Slicer. No documentation on efficient use of the cutting tool within the airway modelling context was provided in the previous document, the cutting tool itself was found to only be useful as a last resort. Nevertheless, experience with the cutting tool especially with regards to airway modelling should be documented and Slicer documentation referenced to save time for other users encountering this condition.
+Blender was chosen for mesh manipulation and OpenSCAD for CAD modelling of required additional parts. Blenders powerful mesh editing tools
+and OpenSCADs versatility in addition to both of these applications being Open Source were key decision points.
 
 \newpage
-\subsection{Physicalising (Mesh repair \& modification)}
+\subsection{Hollowing}
 
-Only the part of mesh repair was explained in the existing process so only that can be evaluated. The repair was conducted using AutoDesk MeshMixer and its “Fix Holes” functionality.
-
-This was found to be well working in initial testing, but the process did not include any documentation beyond “use that tool”. If any fault conditions are found in further testing, the existing process guide would provide no guidance in that regard and would leave process users researching problems on their own. Additionally, the process of opening MeshMixer just to push a button was cumbersome and MeshMixer provided no functionality to automate this process via any means. Additional software would have to be evaluated and if it could provide fixing abilities on a similar level while also being automatable, it would be preferrable to use them instead. A short guide on common issues during mesh repair should also be developed, in case problems arise with a wider set of data.
-
-\subsection{Simulation}
-
-Ansys is an engineering simulation and 3D design software which delivers product modelling solutions, it is used to simulate computer models of structures, electronics or machine components for analysing strength, toughness, elasticity, temperature distribution, electromagnetism, fluid flow, and other attributes. 
-
-After obtaining the model from the previous parts in the process, Ansys Software was to be used for simulating flow and pressure through the model. Firstly, the Ansys Spaceclaim software has to be used for editing, repairs and to simplify the model for simulation before the model will be exported for meshing through Ansys Meshing. Since meshing typically consumes a significant amount of time it takes to get simulation results, Ansys Meshing helps by making better and more automated meshing tools. 
-With this tool zones and inflations can be added to generate a secondary mesh which has more compatibility with the Ansys simulation. And lastly this model will be imported to Ansys Fluent for measurements through simulation.
-
-Ansys is a group of software’s which allows you to perform different forms of Engineering simulation. The software turned out to be quite difficult concerning ease of use and the vast array of different software that needed to be used to achieve a good simulation result presented a steep learning curve. 
-
-\newpage
-\section{Development of new process}
-
-\subsection{Physicalising}
-
-The physicalising process was split into two parts. Mesh repair deals with software and processes evaluated regarding the conversion of mesh data from segmentation into viable models by patching holes and other irregularities and modification looks at software and processes to do with adding peripheral attachment mechanisms (ports) to the model by modifying the existing mesh/model.
-
-\subsubsection{Software}
-
-For \textbf{\emph{repair}}, three software products were evaluated based on the criteria provided in “methods”. The first is Autodesk MeshMixer, used in the previous work and a proprietary, albeit free-to-use, Autodesk product. The second was MeshLab, an open-source software with certain automation qualities. Lastly, the possibility of using a completely custom script was investigated
-
-\subsubsection{Hollowing}
-
-For both simulated and physical flows through a model it would need to be hollowed out. As the mesh resulting from segmentation is a solid model of the air-filled cavities of the upper airways, this step could also be called “turning the model inside out”. This process was not documented at all in the information from the previous groups and would therefore need to be tested and documented anew. It is of vital importance that the space inside the geometry resulting from this step represents the geometry of the air-filled cavities exactly – otherwise the representation would be inaccurate. The new walls need to be generated on the outside of the existing geometry. Figure \ref{hollowing-illustration} illustrates the process and these concerns.
+The Blender "Solidify" modifier was used to create an airway mesh with a wall. By specifying a negative value for wall thickness,
+the walls were created towards the outside of the airways and thus did not narrow the inner airway paths (Fig. \ref{blender-hollowing}) Inside geometry was ignored by the tool,
+so inside features like tonsils were unaffected. 
 
 \begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=.8\linewidth]{images/hollowing-illustration}
-	\caption{Hollowing Illustration}\label{hollowing-illustration}
+	\includegraphics[width=1\linewidth]{images/blender-hollowing}
+	\caption{Hollowing in Blender}\label{blender-hollowing}
 \end{figure}
 
-Both 3D slicer (used for figure \ref{hollowing-illustration} above) and MeshLab support this kind of hollowing of geometry. 3D slicers hollowing feature proved adequately functional but issue-prone, and the mesh required significant correction in MeshLab anyway, making the case for moving the entire process there. MeshLab hollowing functionality has yet to be evaluated.
+\subsection{Cutting into segments}
+
+Two different Blender tools for mesh slicing - the knife and bisect tools - were tested. The bisect tool was used for the final process.
+
+\subsubsection{Knife Tool}
+
+The knife tool was the first method attempted for cutting airway meshes into segments. It is a fairly advanced tool
+that allows projecting 2D shapes onto the 3D geometry to create cut points. While powerful, this tool requires many steps
+to use - 2D geometry needs to be created and the projection needs to be adjusted accordingly. Since separation of airway segments requires
+just a cut along a plane, this tool failed on the Usability criterion.
+
+\subsubsection{Bisect Tool}
+
+The bisect tool is a fairly straightforward tool in Blender to cut a mesh along an infinite plane. It is extremely
+intuitive to use (dragging a line over the mesh). The tool itself only creates the vertices and edges along the mesh - in addition, the mesh
+needs to be separated. This is accomplished using the "Rip" tool. (Fig. \ref{blender-bisect})
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=.5\linewidth]{images/blender-bisect}
+	\caption{Bisecting in Blender}\label{blender-bisect}
+\end{figure}
+
+\section{Parametric connector system}
+
+Once an airway model is hollowed and cut into segments, there needs to be a way to connect the different segments after printing
+in an air-tight way. Additionally, there need to be measurement ports for flow (input/output points of the model) and pressure.
+
+These requirements are accomplished by a universal connector system that consists of adapter plates and features. Adapter plates
+are parametric round, flat surfaces with a large center hole on the model. These are attached at the end of airway segments and
+allow them to be connected to each other. Adapter plates can also be placed on the side of a model.
+
+Apart from to each other, adapter plates can also be connected to features. Features are adapter plates that have certain attachments
+that fulfil a specific purpose like providing a spot to attach a ventilator tube or pressure sensor. The core concept of the system
+is that adapter plates and features generated with the same parameters are always compatible with each other. As long as a model has
+the parameters of its adapter plates documented, matching features can be generated for it.
+
+The adapter plates and features are implemented in OpenSCAD scripts.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=.5\linewidth]{images/connector-system}
+	\caption{Illustration of the connector system}\label{connector-system}
+\end{figure}
+
+\newpage
+\subsection{Adapter plate}
+
+Adapter plates are simple discs of a certain thickness with a large centered hole (Fig. \ref{adapter-plate}). They can be generated either as the disk
+for attachment to a mesh or in a drill form that is used for inserting appropriately spaced holes into an existing flat surface on a mesh.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=.3\linewidth]{images/default_adapter.png}
+	\caption{Adapter plate}\label{adapter-plate}
+\end{figure}
+
+\newpage
+
+They are customizable through the following parameters:
+
+\begin{table}[h]
+	\caption{Adapter plate parameters}\label{mse}
+    \centering
+	\begin{tabular}{|p{0.18\textwidth}|p{0.18\textwidth}|p{0.1\textwidth}|p{0.4\textwidth}|}
+    \hline
+        Name & Variable & Default & Description \\ \hline
+        Diameter & d & 20 & Either the inner or the outer diameter of the adapter plate, depending on if adapter\_plate\_id or adapter\_plate\_od is used. \\ \hline
+        Height & h & 2 & The thickness of the adapter plate or the length of the drill. \\ \hline
+        Spacing & spacing & 2 & Space between screw holes and adapter edges. \\ \hline
+        Screw Diameter & screw\_dia & 3 & Diameter of screw holes. It is generally advisable to keep this a bit below the actual screw size for a good fit, e.g. 2.8 for M3 bolts. \\ \hline
+        Screw Number & screw\_num & 3 & Number of screw holes evenly distributed across the plate. It is not advisable to drop this number below 3 unless space is tight. \\ \hline
+    \end{tabular}
+\end{table}
+
+Since default values for all the parameters are provided, only differing values have to be documented for adapter plates on models.
+
+\subsubsection{Attaching an adapter plate to a segment end}
+
+After cutting a segment of the airway mesh, the geometry is left open (Fig. \ref{blender-bisect}). An adapter plate needs to be attached
+and this open geometry closed (made uniform) to allow for error-free 3D printing.
+
+The diameter of the open airway segment is measured. Then, an adapter plate with the appropriate inner diameter is generated. It is moved
+into position to align with the cut and joined with the surrounding mesh. The exact process with images can be found in the guide document.
+
+This process went through several iterations of refinement, reducing the number of steps and most importantly automating
+the most time-intensive step (selecting the specific mesh for removal) by use of a built-in Blender tool. This also cut down
+dramatically on the number of user errors that could occur, since the manual selection of specific mesh also required the most manual
+precision.
+
+\subsubsection{Attaching an adapter plate to a segment side}
+
+For an adapter plate surface on the side of an airway segment, the Blender knife tool is used. Unlike in cutting of airway segments,
+this process requires the precision of that tool. A circular segment is cut out of the side of the mesh and brought to be vertically
+level. A "drill" adapter plate object is generated and boolean combined with the airway mesh to create matching screw holes for attachment
+of a feature. The exact process with images can be found in the guide document.
+
+This process went through one major iteration where the process wasn't made easier for the user but the resulting mesh ended up
+far cleaner and easier to 3D print by removing jagged edges on the corners of the flat surface.
+
+\subsection{Features}
+
+There are two features that can be generated for adapter plate attachment points - air hose and vent tube connectors.
+
+\begin{itemize}
+	\item \textbf{Air hose connectors} are a design that allows for attachment of any size air hose, for example to attach a small diameter hose for a pressure sensor.
+	\item \textbf{Vent tube connectors} are specifically made to provide a tight fit for standard 21/22mm ventilator tubing.
+\end{itemize}
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=.5\linewidth]{images/features.png}
+	\caption{Air hose (left) and vent tube (right) connector features}\label{features}
+\end{figure}
+
+\section{Printing process}
+
+Printing settings were evaluated by modelling and attempting to print trachea and larynx/pharynx of the model with the identifier "0190673870\_16a\_M". Only one set of settings was tried and provided adequate results. Only one material was tried (PLA).
+
+A layer height between 0.15mm and 0.2mm is acceptable for printing an airway model. The increased speed from these layer heights dramatically
+cuts down printing times and the added precision provided by printing with lower layer heights provides no advantages considering
+the low resolution of the underlying CT data.
+
+Support material has to be generated everywhere. With a quality 3D printer, the overhang angle at which such material is generated
+can be reduced. Due to the model being split up into many segments, it is not a problem to remove support material from inside the airways
+with a screwdriver or long, slim pair of pliers.
+
+Models should be placed with one of their flat adapter plates facing the buildplate. This provides maximum adhesion to the buildplate.
+Whichever plate facing down requires less support material is to be preferred.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=.5\linewidth]{images/larynx_pharynx.png}
+	\caption{Printed larynx/pharynx of 0190673870\_16a\_M}\label{larynx_pharynx}
+\end{figure}
+
+\section{UAM Guide - Guide document for airway work}
+
+The finalized processes for physicalising and printing were documented in an appealing format by use of the
+tool mkdocs. Step-by-step guides with pictures written in markdown are converted a full HTML page that can be considered
+a wiki of upper airway modelling. The guide can also be exported as a PDF document.
+
+Error states were documented in additional "info boxes" that are inserted into the guide whenever appropriate to warn
+of potential common errors or additional information such as useful tools or suggested procedures.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=.8\linewidth]{images/uam-guide.png}
+	\caption{UAM Guide}\label{uam-guide}
+\end{figure}
+
+\section{UAM Thing - A thing for airway measurements}
+
+UAM Thing is a sensor platform that supports four MPX5100/MPX5010 pressure sensors (P1-P4) and four SFMxxxx flow sensors (Q1-Q4). It transmits
+data via MQTT to a computer that can log the data via a tool of choice.
+
+\subsection{Choosing components}
+
+The Espressif ESP32 was chosen as the microcontroller at the heart of the device. It is fast enough to handle more concurrent
+operations than this project requires, has a crash-resistant real time operating system and extensive connectivity via WiFi, two I2C
+controllers and 2 ADCs with 6 channels each.
+
+For a pressure sensor that could provide readings in the required ranges, the MPX5xxx series was chosen. The MPX2xxx series was evaluated but
+the need for an external amplification circuit would've greatly increased circuit complexity. The MPX5xxx provides internal amplification
+for an output level between 0.2V and 4.7V. This would only require a voltage divider for the ESP32s maximum input level of 3.3V.
+
+As a flow sensors, the SFMxxxx series was chosen due to it being made for ventilation devices and therefore supporting all the
+common tubing connections and measuring ranges. Its 5V logic level would require level shifting to the ESP32s 3.3V and the inability
+to change I2C adress on the SFM3xxx series meant multiplexing of the I2C bus would be required.
+
+\subsection{Developing circuit board and case}
+
+\subsubsection{SFMxxxx}
+
+Due to the SFM3xxx series having a fixed I2C address (0xH40), the choice was to either use both of the ESP32s hardware I2C drivers,
+software I2C or an I2C multiplexing chip. Since software I2C is less reliable than the hardware driven equivalent and level
+shifting had to be done anyway, the multiplexing method was chosen. A breakout board based on the TCA9458A multiplexer chip
+is connected to all four SFM sensor channels. The ESP is connected to this multiplexer via one of its hardware I2C drivers. The ESP
+would have to continually iterate over all connected channels to get new measurement values. Since the I2C bus on all of these devices
+can operate at a high 400kHz and SFM sensors have a response time of 1ms (1kHz), this wouldn't impede sampling rate in any way. In addition,
+the TCA9458A handles level shifting between 3.3V and 5V. All I2C lines are pulled up to the appropriate voltage through 10kOhm resistors.
+
+The SFM sensors feature a unique pad connector for which a clamp has to be manufactured that attaches to the sensor. A design from
+the online repository Thingiverse (4924085 by "nicksears") was used as it could be manufactured with readily available pogo pins. The other
+end of the connection was to be made through 4 pin JST-XH connectors. The heating lines on the sensor are left unconnected, as the
+evaluations within the scope of this project did not require working with very humid air.
+
+\subsubsection{MPX5xxx}
+
+The MPX sensors provide a typical output voltage range from 0.2V to 4.7V. This was halved by use of a voltage divider (R1=100kOhm, R2=100kOhm).
+The resulting output voltage would therefore range from 0.1V to 2.35V. Set to 11dB of attenuation, the
+ESP32s ADC could reliably read voltages from 150mV to 2450mV (Fig. \ref{esp-adc}). Below 150mV, the ADC reads zero - the pressure ranges of 0 to 0.33kPa (MPX5010)
+and 0 to 3.33kPA (MPX5100) are therefore unreadable.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=.8\linewidth]{images/esp-adc.png}
+	\caption{ESP32 ADC curve at 11dB attenuation}\label{esp-adc}
+\end{figure}
+
+The sensors are connected via 6-pin 2.54mm pin headers. Since the MPX5100 and MPX5010 both share the same pin arrangement, they can
+be used interchangeably. This configuration is fully supported.
+
+Smoothing capacitors are used for the power supply and each ADC channel as recommended by the application circuit in the MPX datasheets
+to provide more consistent results.
+
+\subsubsection{Hardware}
+
+The schematic was drawn up in KiCads eeschema and a hand-solderable board was created in KiCads pcbnew. A 3D model of this
+circuit board was then imported into OpenSCAD, where a case was modelled around it. The case features descriptions of the sensor ports
+and a little guide graphic to prevent insertion of the MPX sensors in the wrong orientation.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=.5\linewidth]{images/uam-thing-case.png}
+	\caption{UAM Thing case}\label{uam-thing-case}
+\end{figure}
+
+\subsection{Implementing firmware}
+
+MQTT was chosen as the protocol for transmission of data. MQTT is based on publishing data in channels identified by strings and
+is simple, fast and widely implemented for all kinds of programming languages.
+
+On Startup, the ADC channels are configured and the internal calibration values loaded to ensure correct readings from the MPX sensors.
+The SFM sensors are contacted through I2C and their serial as well as calibration values read. SFM sensors that don't respond on
+initialization are excluded from any further querying to save on unneccessary communication attempts.
+
+The ESP32 then creates a WiFi network with a name configured in the firmware. As soon as a computer connects, it attempts
+to connect to an MQTT server on that computer. Publishing of sensor data on that server then starts immediately.
+
+Two tasks in the ESP32's RTOS then run periodically every 200ms.
+
+\begin{itemize}
+\item The FlowSensors task iterates through all connected SFM sensors
+and reads their values. The values are converted to slm and reported on the MQTT channel "/uam-thing/<device-id>/flow/<sensor-id>". Additionally,
+any communication with SFM sensors is error checked by means of CRC8 values to ensure accurate reporting of sensor data.
+
+\item The PressureSensors task iterates over all ADC1 channels and reads the raw value of each. Using the internal calibration of
+the ESP32, the readings are converted to voltages where they are converted to kPa. The ratio is determined by whether the port is
+set to be an MPX5010 or MPX5100 sensor in the firmware. The kPA values are then reported on the MQTT channel "/uam-thing/<device-id>/pressure/<sensor-id>".
+\end{itemize}
+
+\subsection{Preliminary testing}
+
+A prototype UAM Thing was constructed.
+
+To establish plausbility of pressure sensor readings, an MPX5100 sensor was attached to a pressure source set to 0.5 bar or 50kPa.
+The sensor readings read between 49 and 52kPa. As the pressure source manometer was not highly accurate, this was determined to be
+acceptable to establish basic plausbility of sensor readings. A separate evaluation against a professional pressure measurement
+device would need to be performed to perform a full calibration.
+
+Since the SFM sensors are pre-calibrated and communicate via I2C, a basic plausibility test was not considered necessary.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=.6\linewidth]{images/pressure-test.png}
+	\caption{Pressure testing setup}\label{pressure-test}
+\end{figure}
+
+\newpage
+
+\section{UAM Workbench - Software for airway work}
+
+Creation of airway models is a multimodal environment, where CT segmentation, CAD, modelling and datalogging tools have to be used.
+To create a data structure that could house all that data and bind it to the context of one model, a software called UAM Workbench
+was prototyped. This software would store all metadata pertaining to an airway model in a JSON file. Remote interfaces to 3D Slicer
+and Blender were prototyped to allow the software to aid in tasks within these programs and help it manage their complex file structure.
+In addition, it was to contain a built-in MQTT server for UAM Thing and a tool for logging and displaying its sensor data.
+
+This app would be developed using the Tauri development framework to ensure a modern user experience.
+
+Basic management of the file structure as well as prototype interfaces to Blender and UAM Thing were achieved. The tool exists in
+a little showcase format but is, as of submission (28.9.2022), not production-ready.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=.6\linewidth]{images/uam-workbench.png}
+	\caption{UAM Workbench - Welcome Screen}\label{uam-workbench}
+\end{figure}
+
+\section{Evaluation of entire ecosystem}
+
+To evaluate the entire ecosystem (creation process, connector system, printing process \& UAM Thing) a model of the dataset
+"0190673870\_16a\_M" was constructed and a trachea and larynx/pharynx printed. The trachea had vent tube connector features attached at both ends
+and an air hose connector feature for 6mm inner diameter tubing attached on the side. No gaskets or other sealing methods were used between adapter plates and features.
+
+An SFM3300 flow sensor at the inlet was connected to port Q1 of the UAM Thing, another SFM3300 sensor was attached at the outlet of the trachea
+and to port Q2 of the UAM Thing. An MPX5010DP pressure sensor was connected to port P1 of UAM Thing and a tube was connected between the side feature
+of the trachea and the positive pressure input. Figures \ref{eval-setup} and \ref{eval-setup-irl} illustrate this setup.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=.6\linewidth]{images/eval-setup.png}
+	\caption{Ecosystem evaluation - Schematic}\label{eval-setup}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=.6\linewidth]{images/eval-setup-irl.jpg}
+	\caption{Ecosystem evaluation - Setup}\label{eval-setup-irl}
+\end{figure}
+
+Data was logged for a 25 second period while flow was periodically increased up to a point of 300 slm as measured by the inlet sensor Q1. A significant
+difference in flow between Q1 and Q2 would indicate a leak.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=.8\linewidth]{images/eval-result.png}
+	\caption{Ecosystem evaluation - Result}\label{eval-result}
+\end{figure}
+
+The variance in slm between Q1 and Q2 is negligible, on the order of 1slm. No significant leaks were observed. The pressure sensor remained mostly idle,
+only showing 1kPa on occasion when flows over 120 slm were present.
 
 \chapter{Discussion}
 
-\section{Process Evaluation}
-The three-concern methodology for process evaluation proved efficient in practice and easy to apply. While some additional concern for quality of the result should be added in the future the identified issues and their remedies should already be an improvement to the process and provide a solid foundation for future development.  While criteria-based evaluation has yet to be applied to the improvements, in preliminary testing they showed promise for streamlining the process and easing the workload for processing of many examinations, especially with regards to segmentation.
+\section{Processes and ecosystem evaluation}
+
+Overall, the new processes and guide documents proved to be a success, as they were used quite extensively while conducting
+this very research. Error rates and modelling times were gradually reduced overall, though a proper case study about this
+including people without prior experience would have to be conducted to say this for certain.
+
+The result in the ecosystem evaluation came unexpected, as a leak without any sealing measures was expected. The adapters performed
+better than expected, which might be attributable to their large surface area and the clamping force of the screws that hold them together. Whether
+they hold up in higher pressure scenarios would need further evaluation.
+
+\section{Shortcomings and possible improvements of UAM Thing}
+
+\begin{itemize}
+	\item A printed circuit board would provide a more robust electrical foundation and cut down on soldering work
+	\item The pin headers proved to be insufficient in supporting the weight of the MPX sensors and attached tubing, eventual failure is probable.
+		  They could be supported through their own screw holes with a more advanced case design.
+	\item Similarly, the JST connectors could be swapped for a sturdier alternative like DIN plugs. JST connectors are rated for around 10.000 cycles.
+	\item More calibration work has to be done to ensure accuracy of the MPX sensors especially
+	\item Since the device is powered off USB, a more stable 5V supply voltage would be advantageous to prevent crashes of the SFM sensors and ensure accuracy of the MPX sensors. A boost converter could accomplish this.
+\end{itemize}
+\section{Further process development}
+\begin{itemize}
+	\item The physicalisation process needs to be trialed with more complex and non-uniform meshes. Some strange errors can occur in those cases,
+		  for which resolutions should be documented.
+	\item More printing materials and technologies (SLA) need to be trialed with airway models.
+\end{itemize}
 
 \newpage
 \chapter{References}

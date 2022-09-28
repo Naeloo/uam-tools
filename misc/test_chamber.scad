@@ -1,10 +1,6 @@
 use <adapter_plate.scad>;
 
-d=20;
-h=2;
-spacing=2;
-screw_dia=2.8;
-screw_num=3;
+d=20; h=2; spacing=3; screw_dia=2.8; screw_num=3;
 
 chamber_h = 15;
 chamber_thick = 2;

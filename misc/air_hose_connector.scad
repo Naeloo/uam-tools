@@ -8,18 +8,18 @@
 use <adapter_plate.scad>;
 
 // Adapter params
-adap_d=21; adap_h=2; adap_spacing=2; adap_screw_dia=2.8; adap_screw_num=3;
+adap_d=20; adap_h=2; adap_spacing=3; adap_screw_dia=2.8; adap_screw_num=3;
 
 $fn = 100*1;
 
 // Outer Diameter (bottom)
-outer_diameter_1 = 3.8;
+outer_diameter_1 = 10;
 // Wall Thickness (bottom)
 wall_thickness_1 = .8;
 // Rib Thickness (bottom), set to Zero to remove
 barb_size_1 = .5;
 // Length (bottom)
-length_1 = 7;
+length_1 = 15;
 // Middle Diameter
 mid_diameter = calculate_outer_dia(adap_d, adap_spacing, adap_screw_dia);
 // Middle Length
@@ -50,5 +50,5 @@ difference(){
     // Create a drill with some margin to prevent diff fighting
     drill_h = adap_h+1;
     translate([0,0, length_1 - (drill_h - adap_h) / 2])
-        adapter_drill(d=adap_d, h=drill_h, spacing=adap_spacing, screw_dia=adap_screw_dia, screw_num=adap_screw_num, no_center=1);
+        adapter_drill(d=adap_d, screw_num=2, screw_dia=2, spacing=.5, no_center=1);
 }

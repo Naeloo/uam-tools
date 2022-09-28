@@ -9,8 +9,8 @@ module adapter_plate(d=20, h=2, spacing=2, screw_dia=3,screw_num=3) {
     screw_radius = inner_dia/2 + spacing + screw_dia/2;
     linear_extrude(h){
         difference() {
-            circle(d=outer_dia, $fn=30);
-            circle(d=inner_dia, $fn=30);
+            circle(d=outer_dia, $fn=60);
+            circle(d=inner_dia, $fn=60);
             if(screw_num > 0){
                 for( i = [0 : screw_num-1] ){
                     translate(screw_coords(i*screw_angle, screw_radius)) circle(d=screw_dia, $fn=30);
@@ -54,15 +54,15 @@ module adapter_drill_od(d=20, h=20, spacing=2, screw_dia=3, screw_num=3, no_cent
     }
 }
 
-d=9.5;
+d=3;
 screw_num=2;
 screw_dia=2;
 
 //adapter_plate(d=d, screw_num=screw_num, screw_dia=screw_dia,spacing=3);
-//adapter_drill(d=d, screw_num=screw_num, screw_dia=screw_dia);
+adapter_drill(d=d, spacing=3, screw_num=3, screw_dia=2);
 //adapter_plate();
-adapter_drill_od(d=d, spacing=.5, screw_dia=screw_dia, screw_num=screw_num);
-//adapter_plate(d=d, spacing=2);
+//adapter_drill_od(d=d, spacing=2, screw_dia=2);
+//adapter_plate(d=d, spacing=3);
 
 // upper: screw_num=4, screw_dia=2.8, d=20
 // bottom: screw_num=4, screw_dia=2.8, d=20

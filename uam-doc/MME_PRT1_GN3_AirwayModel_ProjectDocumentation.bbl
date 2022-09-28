@@ -1,0 +1,57 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{omicronairways}{article}{}
+      \name{author}{1}{}{%
+        {{hash=5af1ea02cd81bd682d636322503a1eaf}{%
+           family={Kozlov},
+           familyi={K\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{5af1ea02cd81bd682d636322503a1eaf}
+      \strng{fullhash}{5af1ea02cd81bd682d636322503a1eaf}
+      \strng{bibnamehash}{5af1ea02cd81bd682d636322503a1eaf}
+      \strng{authorbibnamehash}{5af1ea02cd81bd682d636322503a1eaf}
+      \strng{authornamehash}{5af1ea02cd81bd682d636322503a1eaf}
+      \strng{authorfullhash}{5af1ea02cd81bd682d636322503a1eaf}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature}
+      \field{month}{1}
+      \field{title}{Omicron’s feeble attack on the lungs could make it less dangerous}
+      \field{volume}{601}
+      \field{year}{2022}
+      \field{pages}{177}
+      \range{pages}{1}
+      \verb{urlraw}
+      \verb https://www.nature.com/articles/d41586-022-00007-8
+      \endverb
+      \verb{url}
+      \verb https://www.nature.com/articles/d41586-022-00007-8
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

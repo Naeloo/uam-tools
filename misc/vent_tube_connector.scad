@@ -1,7 +1,7 @@
 use <adapter_plate.scad>;
 
 // Adapter params
-adap_d=21; adap_h=2; adap_spacing=2; adap_screw_dia=2.8; adap_screw_num=3;
+adap_d=20; adap_h=2; adap_spacing=3; adap_screw_dia=2.8; adap_screw_num=3;
 
 length = 20;
 width = 2;
